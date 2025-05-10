@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 
-class HHPatcherProbe
+class Program
 {
+    static string version = "HHPatcher Probe v1.0.0"; // Version Indicator
     static Dictionary<string, string> users = new Dictionary<string, string>
     {
         { "petrofizkulture", "hiho" },
@@ -28,6 +29,7 @@ class HHPatcherProbe
 
     static void Main()
     {
+        DrawFrame(version);
         if (!AuthenticateUser()) return;
         InitializeLog();
         SelectConsole();
@@ -46,7 +48,7 @@ class HHPatcherProbe
 
     static bool AuthenticateUser()
     {
-        DrawFrame("HHPatcher Probe Login");
+        DrawFrame("Login Required");
         Console.Write("Username: ");
         string username = Console.ReadLine();
         Console.Write("Password: ");
@@ -54,7 +56,7 @@ class HHPatcherProbe
 
         if (users.TryGetValue(username, out string correctPassword) && correctPassword == password)
         {
-            Console.WriteLine("✅ Login Successful! Welcome, " + username + "!");
+            Console.WriteLine($"✅ Login Successful! Welcome, {username}!");
             return true;
         }
         else
