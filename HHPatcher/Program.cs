@@ -3,6 +3,7 @@ using System.Threading;
 
 class HHPatcher
 {
+    static string version = "HHPatcher v1.0.0"; // Version Indicator
     static string[] consoles = { "Wii", "Wii U", "DSi", "3DS" };
     static string selectedConsole = "";
 
@@ -17,6 +18,7 @@ class HHPatcher
 
     static void Main()
     {
+        DrawFrame(version); // Display Version on Startup
         SelectConsole();
         ShowAppSelection();
     }
@@ -24,6 +26,14 @@ class HHPatcher
     static void ClearScreen()
     {
         Console.Clear();
+    }
+
+    static void DrawFrame(string title)
+    {
+        Console.Clear();
+        Console.WriteLine("+==================================+");
+        Console.WriteLine($"| {title,-30} |");
+        Console.WriteLine("+==================================+");
     }
 
     static void SelectConsole()
